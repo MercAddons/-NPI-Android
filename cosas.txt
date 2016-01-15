@@ -1,0 +1,13 @@
+20:14 15/01/2016
+-LinearLayout: determinan distribución de controles en el espacio.
+	Elementos de un layout:
+	·TextView-etiqueta
+	·EditText-cuadro de texto
+	·Button-boton.
+Propiedades:
+	·android:id - para identificarlo en el código "@+id/"-> hace que al compilar se genere automáticamente una nueva constante en la clase R para controlarla. Acceso: R.id.<nombre-id>
+	·android:layout_height/width - Dimensiones de control con respecto al layout que lo contiene. "wrap_content" hace que el tamaño se ajuste a lo que contiene. "match_parent" para indicar que se ajustará al layout contenedor.
+
+	·android:inputType - Indica tipo de contenido a alvergar "text", "textPassword" "phone" "date"....
+	·android:text - texto que muestra, cadena directamente o cadena definida en los recursos del proyecto -> "string.xml". Acceso "@string/"
+	(string.xml está en /src/main/res/values/strings.xml)
