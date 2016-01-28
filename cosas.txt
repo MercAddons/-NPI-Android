@@ -1,4 +1,4 @@
-20:14 15/01/2016
+ac20:14 15/01/2016
 -LinearLayout: determinan distribución de controles en el espacio.
 	Elementos de un layout:
 	·TextView-etiqueta
@@ -11,3 +11,10 @@ Propiedades:
 	·android:inputType - Indica tipo de contenido a alvergar "text", "textPassword" "phone" "date"....
 	·android:text - texto que muestra, cadena directamente o cadena definida en los recursos del proyecto -> "string.xml". Acceso "@string/"
 	(string.xml está en /src/main/res/values/strings.xml)
+
+Una activity, una pantalla
+	setContentView(R.layout.activity_main) establece como interfaz gráfica la definidia en el recurso R.layout.activity_main (fichero /src/main/res/layout/activity_main.xml)
+	onCreateOptionsMenu() 
+	onOptionsItemSelected() se utilzan para definir y gestionar los menus de aplicación.
+
+Comunicación entre componentes y aplicaciones => intents
