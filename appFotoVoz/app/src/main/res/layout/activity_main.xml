@@ -1,54 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="pacomer.appfotovoz.MainActivity">
+    android:weightSum="1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/rosaVientos"
+        android:layout_gravity="center_vertical"
+        android:layout_column="0"
+        android:contentDescription="0"
+        android:layout_below="@+id/cardinal"
+        android:layout_marginTop="154dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_marginRight="20dp"
+        android:minHeight="60dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp" />
 
-    </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:text="@string/microfono"
+        android:layout_column="1"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/rosaVientos"
+        android:layout_alignEnd="@+id/rosaVientos"
+        android:layout_alignLeft="@+id/rosaVientos"
+        android:layout_alignStart="@+id/rosaVientos" />
 
-    <include layout="@layout/content_main" />
+    <TextView
+        android:id="@+id/cardinal"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:text="@string/app_name"
+        android:textStyle="normal"
+        android:layout_column="2"
+        android:layout_below="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignEnd="@+id/button1"
+        android:layout_alignLeft="@+id/rosaVientos"
+        android:layout_alignStart="@+id/rosaVientos" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
+        android:text="New Text"
+        android:id="@+id/textView"
+        android:layout_alignLeft="@+id/cardinal"
+        android:layout_alignStart="@+id/cardinal"
+        android:layout_alignRight="@+id/cardinal"
+        android:layout_alignEnd="@+id/cardinal"
+        android:layout_below="@+id/cardinal" />
 
-        <TextView
-            android:id="@+id/cardinal"
-            android:layout_width="0dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="0.29"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="bottom" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
-
-    </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
