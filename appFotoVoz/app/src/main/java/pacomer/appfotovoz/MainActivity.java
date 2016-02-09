@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button bt_start;
     private int punto_cardinal;
     private int error,valor_min,valor_max;
-    private TextView punto,debug;
+    private TextView punto;
     private ImageView img;
     private float currentDegree=0f;
     private SensorManager miSensorManager;
@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         img=(ImageView)findViewById(R.id.rosaVientos);
         img.setImageResource(R.drawable.rosaweb);
         miSensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         punto=(TextView)findViewById(R.id.cardinal);
-        debug=(TextView)findViewById(R.id.textView);
         apunta=false;
-        punto.setText("Pulse micro para hablar");
+        punto.setText(R.string.pulsa);
         bt_start=(Button)findViewById(R.id.button1);
         bt_start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,62 +63,60 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onPause();
         miSensorManager.unregisterListener(this);
     }
+
+    /**
+     * Inicia reconocimiento de voz
+     */
     private void startVoiceRecognitionActivity(){
         Intent intent =new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Diga el punto cardinal: ");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, R.string.habla);
         startActivityForResult(intent, VOICE_RECOGNITION_REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode,int resultCode, Intent data){
-        if(requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode== RESULT_OK){
-            ArrayList<String> matches=data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            String [] palabras=matches.get(0).toString().split(" ");
+        if(requestCode == VOICE_RECOGNITION_REQUEST_CODE && resultCode== RESULT_OK) {
+            ArrayList<String> matches = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            String[] palabras = matches.get(0).toString().split(" ");
             apunta = false;
-            if(palabras[0].equals("norte") || palabras[0].equals("Norte")){
-                punto_cardinal=360;
-                punto.setText("JIJI");
-                apunta=true;
+            if (palabras[0].equals("norte") || palabras[0].equals("Norte")) {
+                punto_cardinal = 360;
+                apunta = true;
+            } else if (palabras[0].equals("este") || palabras[0].equals("Este")) {
+                punto_cardinal = 90;
+                apunta = true;
+            } else if (palabras[0].equals("sur") || palabras[0].equals("Sur")) {
+                punto_cardinal = 180;
+                apunta = true;
+            } else if (palabras[0].equals("oeste") || palabras[0].equals("Oeste")) {
+                punto_cardinal = 270;
+                apunta = true;
             }
-            else if(palabras[0].equals("este") || palabras[0].equals("Este")){
-                punto_cardinal=90;
-                apunta=true;
-            }
-            else if(palabras[0].equals("sur") || palabras[0].equals("Sur")){
-                punto_cardinal=180;
-                apunta=true;
-            }
-            else if(palabras[0].equals("oeste") || palabras[0].equals("Oeste")){
-                punto_cardinal=270;
-                apunta=true;
-            }
-            try{
-                error=Integer.parseInt(palabras[1]);
-                debug.setText("");
-            }catch (Exception e){
-                debug.setText("No se entendio el numero, digalo otra vez.");
+            try {
+                if(apunta) {
+                    error = Integer.parseInt(palabras[1]);
+                    punto.setText("");
+                }
+            } catch (Exception e) {
+                punto.setText(R.string.noEntiendo);
+                apunta=false;
             }
 
 
-
-            if(apunta && punto_cardinal!=360){
-                Integer margen = (360*error/100)/2;
-                valor_max=punto_cardinal+margen;
-                valor_min=punto_cardinal-margen;
-            }else if(apunta && punto_cardinal==360){
-                Integer margen = (360*error/100)/2;
-                valor_max= margen;
-                valor_min=punto_cardinal-margen;
+            if (apunta && punto_cardinal != 360) {
+                Integer margen = (360 * error / 100) / 2;
+                valor_max = punto_cardinal + margen;
+                valor_min = punto_cardinal - margen;
+            } else if (apunta && punto_cardinal == 360) {
+                Integer margen = (360 * error / 100) / 2;
+                valor_max = margen;
+                valor_min = punto_cardinal - margen;
             }
-            if(!apunta){
-                punto.setText("NO TE ENTIENDO");
-                debug.setText(palabras[0]);
+            if (!apunta) {
+                punto.setText(R.string.noEntiendo);
             }
-            else
-                punto.setText("IJALSDJLAKSDJA");
         }
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -159,14 +157,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if(apunta){
             if(punto_cardinal==360){
                 if((grado>=valor_min && grado <=360) || (grado>=0 && grado<=valor_max)){
-                    punto.setText("Esta apuntando");
+                    punto.setText(R.string.apunta);
                 }
                 else
-                    punto.setText("No esta apuntando");
+                    punto.setText(R.string.noApunta);
             }else if(grado<=valor_max && grado>=valor_min){
-                punto.setText("Esta apuntando");
+                punto.setText(R.string.apunta);
             }
-            else punto.setText("No esta apuntando");
+            else punto.setText(R.string.noApunta);
         }
 
 

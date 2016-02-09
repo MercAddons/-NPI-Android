@@ -2,4 +2,10 @@
     <string name="app_name">appFotoVoz</string>
     <string name="action_settings">Settings</string>
     <string name="microfono">Micro</string>
+    <string name="habla">Diga el punto cardinal: </string>
+    <string name="noEntiendo">No te entiendo. Diga el punto cardinal de nuevo. </string>
+    <string name="apunta">Esta apuntando</string>
+    <string name="noApunta">No esta apuntando</string>
+    <string name="pulsa">Pulsa el botón para hablar</string>
+
 </resources>

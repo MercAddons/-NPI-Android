@@ -53,15 +53,4 @@
         android:layout_alignLeft="@+id/rosaVientos"
         android:layout_alignStart="@+id/rosaVientos" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
-        android:layout_alignLeft="@+id/cardinal"
-        android:layout_alignStart="@+id/cardinal"
-        android:layout_alignRight="@+id/cardinal"
-        android:layout_alignEnd="@+id/cardinal"
-        android:layout_below="@+id/cardinal" />
-
 </RelativeLayout>
