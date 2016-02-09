@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">appMovimientoSonido</string>
     <string name="action_settings">Settings</string>
+
+    <string name="realiza">Realiza el gesto</string>
+    <string name="fallaste">FALLASTE</string>
+    <string name="acierto">GESTO CORRECTO</string>
 </resources>

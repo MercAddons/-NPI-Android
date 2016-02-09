@@ -1,5 +1,29 @@
 package pacomer.appmovimientosonido;
 
+/**
+ * appGestosFoto
+ *
+ *
+ *Copyright (C) 2016  Mercedes Alba Moyano y Francisco Peña Quiros
+ *This program is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *This program is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with this program.  If not, see <http://www.gnu.org/licenses/>
+ *
+ * @author Mercedes Alba Moyano
+ * @author Francisco Peña Quirós
+ * @version 09.02.2016
+ * Se realizan una serie de movimientos con el movil a modo de patrón. Si se realiza correctamente
+ * suena un determinado sonido (Inicio comecocos) si falla suena la muerte de Pacman
+ */
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -15,6 +39,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+/**
+ * @class MainActivity
+ * Clase pricnipal de la aplicación. Implementa de SensorEventListener para hacer uso del
+ * acelerómetro
+ */
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
     private SensorManager sensorManager;
     private TextView pos;
@@ -34,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         muerte=sound.load(R.raw.pacman);
         inicio=sound.load(R.raw.inicial);
         pos=(TextView) findViewById(R.id.textView4);
-        pos.setText("Realiza el gesto");
+        pos.setText(R.string.realiza);
         sensorManager=(SensorManager) getSystemService(SENSOR_SERVICE);
         sensorManager.registerListener(this,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
         pos1=pos2=pos3=false;
@@ -63,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 zvalue = event.values[2];
                 posicion = true;
                 if(fallaste>0){
-                    pos.setText("Realiza el gesto");
+                    pos.setText(R.string.realiza);
                 }
                 fallaste=0;
 
@@ -96,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
             if (reproducir) {
-                pos.setText("GESTO CORRECTO");
+                pos.setText(R.string.acierto);
                 sound.play(inicio);
                 reproducir = false;
                 pos1 = pos2 = pos3 = false;
@@ -104,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 fallaste=2;
             }
             if(fallaste==1) {
-                pos.setText("FALLASTE");
+                pos.setText(R.string.fallaste);
                 sound.stop(inicio);
                 sound.play(muerte);
 
