@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">appSorpresa</string>
+    <string name="sinAcceso">No se ha podido acceder a la cámara</string>
+    <string name="accediendo">Accediendo a la cámara</string>
+    <string name="camera">Cámara encontrada</string>
+    <string name="errorLinterna">Error al activar la linterna</string>
+    <string name="noFlash">El dispositivo no tiene el modo de Flash Linterna</string>
+    <string name="noAccesoLinterna">No se ha podido acceder al Flash de la cámara</string>
 </resources>
